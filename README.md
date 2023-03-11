@@ -2,6 +2,6 @@
 
 To run the node, run the following commands in the root dir:
 
-* Run `npm i`
-* Run `tsc`
-* Run `npm run start`
+* `npm i`
+* `tsc`
+* `npm run start`
