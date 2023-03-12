@@ -42,7 +42,7 @@ function main(workerData: any) {
   parentPort.postMessage({type: "mydata", data: `workerData: ${workerData} workerDataNum ${workerData["num"]} minername ${minername} chainheight ${workerData.chainheight} chaintip ${workerData.chaintip} mempooltxs ${canonicalize(workerData.mempooltxs)}`})
   let coinbaseTx = {
       type:"transaction", 
-      outputs: [{pubkey: PUBLICKEY, value: 50000000000}],
+      outputs: [{pubkey: PUBLICKEY, value: 50000000000000}],
       height: tipheight + 1
       };
   let coinbaseTxHash = myHash(canonicalize(coinbaseTx));
