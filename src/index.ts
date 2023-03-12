@@ -12,7 +12,7 @@ logger.info(`Malibu - A Marabu node`)
 logger.info(`Katherine Li <kathli@stanford.edu>`)
 
 async function main() {
-  await minerWorker.init(); 
+  // await minerWorker.init(); 
   await chainManager.init()
   await mempool.init()
   network.init(BIND_PORT, BIND_IP)

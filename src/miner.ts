@@ -71,9 +71,9 @@ function main(workerData: any) {
         // broadcast this tx & block & let the gossiping bring it back to us
         parentPort.postMessage({type: "mined", coinbase: coinbaseTx, block: block});
     }
-    else if (nonce % NONCE_MOD == 0) {
+    /*else if (nonce % NONCE_MOD == 0) {
         parentPort.postMessage({type: "update", text: `Still unsuccessfully mining, current blockhash ${blockHash} block ${canonicalize(block)}`});
-    }
+    }*/
     nonce += 1;
     const newnonceStr = nonce.toString(16);
     block.nonce = ZEROS.substring(newnonceStr.length) + newnonceStr;
