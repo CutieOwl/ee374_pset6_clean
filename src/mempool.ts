@@ -45,19 +45,18 @@ class MemPool {
     }
     catch {
       // start with an empty mempool of no transactions
-      this.txs = []
-      this.state = new UTXOSet(new Set())
-      await this.save()
     }
     try {
       logger.debug(`Loading mempool state from cache`)
       const outpoints = await db.get('mempool:state')
-      //logger.debug(`Outpoints loaded from cache: ${outpoints}`)
+      logger.debug(`${outpoints.length} outpoints loaded from cache`)
       this.state = new UTXOSet(new Set<string>(outpoints))
     }
     catch {
       // start with an empty state
+      this.txs = []
       this.state = new UTXOSet(new Set())
+      await this.save()
     }
   }
   async onTransactionArrival(tx: Transaction): Promise<boolean> {
@@ -107,10 +106,10 @@ class MemPool {
         ++successes
       }
     }
+    await this.save()
     logger.info(`Re-applied ${successes} transaction(s) to mempool.`)
     logger.info(`${successes - orphanedTxs.length} transactions were abandoned.`)
     logger.info(`Mempool reorg completed.`)
-    await this.save()
     await minerWorker.refreshMempool(this.getTxIds());
   }
 }
