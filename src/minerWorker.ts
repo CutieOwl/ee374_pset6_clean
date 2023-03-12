@@ -27,8 +27,8 @@ class MinerWorker {
                 if (message.type == "mined") {
                     logger.debug(`Mined coinbase tx: ${canonicalize(message.coinbase)}`);
                     logger.debug(`Mined block: ${canonicalize(message.block)}`);
-                    network.broadcast(message.coinbase);
-                    network.broadcast(message.block);
+                    network.broadcast({type:"object",object:message.coinbase});
+                    network.broadcast({type:"object",object:message.block});
                 }
                 else {
                     logger.debug(canonicalize(message));
@@ -54,8 +54,8 @@ class MinerWorker {
                 if (message.type == "mined") {
                     logger.debug(`Mined coinbase tx: ${canonicalize(message.coinbase)}`);
                     logger.debug(`Mined block: ${canonicalize(message.block)}`);
-                    network.broadcast(message.coinbase);
-                    network.broadcast(message.block);
+                    network.broadcast({type:"object",object:message.coinbase});
+                    network.broadcast({type:"object",object:message.block});
                 }
                 else {
                     logger.debug(canonicalize(message));
@@ -78,8 +78,8 @@ class MinerWorker {
                 if (message.type == "mined") {
                     logger.debug(`Mined coinbase tx: ${canonicalize(message.coinbase)}`);
                     logger.debug(`Mined block: ${canonicalize(message.block)}`);
-                    network.broadcast(message.coinbase);
-                    network.broadcast(message.block);
+                    network.broadcast({type:"object",object:message.coinbase});
+                    network.broadcast({type:"object",object:message.block});
                 }
                 else {
                     logger.debug(canonicalize(message));
